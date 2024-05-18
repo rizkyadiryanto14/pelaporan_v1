@@ -1,5 +1,3 @@
-
-
 <div class="modal fade" id="modallogout" data-bs-backdrop="static" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -44,7 +42,7 @@
 			confirmButtonText: 'OK'
 		});
 	</script>
-<?php endif; ?>	
+<?php endif; ?>
 
 <?php if ($this->session->flashdata('gagal')) : ?>
 	<script>

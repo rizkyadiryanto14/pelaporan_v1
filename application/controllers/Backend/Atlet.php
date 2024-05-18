@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @property $Atlet_model
  * @property $input
@@ -36,9 +37,9 @@ class Atlet extends CI_Controller
 		$post = $this->input->post();
 		$insert_atlet = $this->Atlet_model->insert_atlet($post);
 
-		if ($insert_atlet){
+		if ($insert_atlet) {
 			$this->session->set_flashdata('sukses', 'Data Atlet Berhasil Di Tambahkan');
-		}else {
+		} else {
 			$this->session->set_flashdata('gagal', 'Data Atlet Gagal Di Tambahkan');
 		}
 		redirect(base_url('atlet'));
@@ -69,9 +70,9 @@ class Atlet extends CI_Controller
 	public function delete($id_atlet): void
 	{
 		$delete = $this->Atlet_model->delete_atlet($id_atlet);
-		if ($delete){
+		if ($delete) {
 			$this->session->set_flashdata('sukses', 'Data Atlet Berhasil Di Hapus');
-		}else {
+		} else {
 			$this->session->set_flashdata('gagal', 'Data Atlet Gagal Di Hapus');
 		}
 		redirect(base_url('atlet'));

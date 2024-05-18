@@ -26,7 +26,17 @@
 						<ion-icon name="cash-outline"></ion-icon>
 					</div>
 					<div class="in">
-						<div>Pembayaran</div>
+						<div>Anggaran Masuk</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url('anggaran') ?>" class="item">
+					<div class="icon-box bg-primary">
+						<ion-icon name="cash-outline"></ion-icon>
+					</div>
+					<div class="in">
+						<div>Anggaran Keluar</div>
 					</div>
 				</a>
 			</li>
@@ -47,6 +57,36 @@
 					</div>
 					<div class="in">
 						<div>Pelatih</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url('iuran') ?>" class="item">
+					<div class="icon-box bg-primary">
+						<ion-icon name="wallet-outline"></ion-icon>
+					</div>
+					<div class="in">
+						<div>Iuran</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url('kategori_belanja') ?>" class="item">
+					<div class="icon-box bg-primary">
+						<ion-icon name="wallet-outline"></ion-icon>
+					</div>
+					<div class="in">
+						<div>Kategori Belanja</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="<?= base_url('belanja') ?>" class="item">
+					<div class="icon-box bg-primary">
+						<ion-icon name="wallet-outline"></ion-icon>
+					</div>
+					<div class="in">
+						<div>Belanja</div>
 					</div>
 				</a>
 			</li>

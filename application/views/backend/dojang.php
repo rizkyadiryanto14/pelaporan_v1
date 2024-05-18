@@ -50,7 +50,6 @@
 			</table>
 		</div>
 	</div>
-
 </div>
 
 <div class="offcanvas offcanvas-bottom action-sheet inset" tabindex="-1" id="actionSheetShare">
@@ -106,7 +105,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Form Hapus Atlet</h5>
+				<h5 class="modal-title">Form Hapus Dojang</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<form id="hapusDojangForm" method="post">

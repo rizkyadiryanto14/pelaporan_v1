@@ -3,7 +3,7 @@
 <!-- App Header -->
 <div class="appHeader bg-primary text-light">
 	<div class="left">
-		<a href="<?= base_url('dashboard')?>" class="headerButton goBack">
+		<a href="<?= base_url('dashboard') ?>" class="headerButton goBack">
 			<ion-icon name="chevron-back-outline"></ion-icon>
 		</a>
 	</div>
@@ -17,34 +17,37 @@
 		<div class="table-responsive">
 			<table id="atlet" class="table table-striped">
 				<thead>
-				<tr class="text-center">
-					<th>No</th>
-					<th>Dojang</th>
-					<th>Pelatih</th>
-					<th>Tanggal</th>
-					<th>Action</th>
-				</tr>
+					<tr class="text-center">
+						<th>No</th>
+						<th>Dojang</th>
+						<th>Pelatih</th>
+						<th>Tanggal</th>
+						<th>Action</th>
+					</tr>
 				</thead>
 				<tbody>
-				<?php
-				if (empty($data_jadwal)) {
-					echo '<tr><td colspan="5" class="text-center">Tidak ada data</td></tr>';
-				} else {
-					$no = 1;
-					foreach ($data_jadwal as $item) { ?>
-						<tr class="text-center">
-							<td><?= $no++ ?></td>
-							<td><a href="" data-id="<?= $item->id_jadwal ?>" data-bs-toggle="offcanvas"
-								   data-bs-target="#actionSheetShare"><?= $item->nama_dojang ?></a></td>
-							<td><?= $item->nama_pelatih ?></td>
-							<td><?= longdate_indo($item->tanggal) ?></td>
-							<td>
-								<button class="btn btn-primary btn-sm edit-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#ModalEditJadwal" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></button>
-								<button class="btn btn-danger btn-sm hapus-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#modalhapus" data-bs-toggle="modal"><ion-icon name="trash-outline"></ion-icon></button>
-							</td>
-						</tr>
+					<?php
+					if (empty($data_jadwal)) {
+						echo '<tr><td colspan="5" class="text-center">Tidak ada data</td></tr>';
+					} else {
+						$no = 1;
+						foreach ($data_jadwal as $item) { ?>
+							<tr class="text-center">
+								<td><?= $no++ ?></td>
+								<td><a href="" data-id="<?= $item->id_jadwal ?>" data-bs-toggle="offcanvas" data-bs-target="#actionSheetShare"><?= $item->nama_dojang ?></a></td>
+								<td><?= $item->nama_pelatih ?></td>
+								<td><?= longdate_indo($item->tanggal) ?></td>
+								<td>
+									<button class="btn btn-primary btn-sm edit-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#ModalEditJadwal" data-bs-toggle="modal">
+										<ion-icon name="create-outline"></ion-icon>
+									</button>
+									<button class="btn btn-danger btn-sm hapus-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#modalhapus" data-bs-toggle="modal">
+										<ion-icon name="trash-outline"></ion-icon>
+									</button>
+								</td>
+							</tr>
 					<?php }
-				} ?>
+					} ?>
 				</tbody>
 			</table>
 		</div>
@@ -77,7 +80,7 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
-	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
+	<a href="#" data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
 		<div class="col">
 			<div class="action-button">
 				<ion-icon name="add-outline"></ion-icon>
@@ -147,7 +150,7 @@
 										<?php if (!empty($data_dojang)) {
 											foreach ($data_dojang as $item) { ?>
 												<option value="<?= $item->id_dojang ?>"><?= $item->nama_dojang ?></option>
-											<?php }
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -160,7 +163,7 @@
 										<?php if (!empty($data_pelatih)) {
 											foreach ($data_pelatih as $item) { ?>
 												<option value="<?= $item->id_pelatih ?>"><?= $item->nama_pelatih ?></option>
-											<?php }
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -173,7 +176,7 @@
 										<?php if (!empty($data_kategori)) {
 											foreach ($data_kategori as $item) { ?>
 												<option value="<?= $item->id_kategori ?>"><?= $item->nama_kategori ?></option>
-											<?php }
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -181,8 +184,7 @@
 							<div class="form-group basic">
 								<div class="input-wrapper">
 									<label class="form-label" for="edit_tempat">Alamat <small class="text-danger">*</small></label>
-									<input type="text" class="form-control" id="edit_tempat" name="tempat"
-										   placeholder="Alamat" required>
+									<input type="text" class="form-control" id="edit_tempat" name="tempat" placeholder="Alamat" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
@@ -200,8 +202,7 @@
 							<div class="form-group basic">
 								<div class="input-wrapper">
 									<label class="form-label" for="edit_keterangan">Keterangan <small class="text-danger">*</small></label>
-									<input type="text" class="form-control" id="edit_keterangan" name="keterangan"
-										   placeholder="Keterangan" required>
+									<input type="text" class="form-control" id="edit_keterangan" name="keterangan" placeholder="Keterangan" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
@@ -242,8 +243,8 @@
 										<option selected disabled> Pilih Dojang</option>
 										<?php if (!empty($data_dojang)) {
 											foreach ($data_dojang as $item) { ?>
-											<option value="<?= $item->id_dojang ?>"><?= $item->nama_dojang ?></option>
-											<?php }
+												<option value="<?= $item->id_dojang ?>"><?= $item->nama_dojang ?></option>
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -256,7 +257,7 @@
 										<?php if (!empty($data_pelatih)) {
 											foreach ($data_pelatih as $item) { ?>
 												<option value="<?= $item->id_pelatih ?>"><?= $item->nama_pelatih ?></option>
-											<?php }
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -269,7 +270,7 @@
 										<?php if (!empty($data_kategori)) {
 											foreach ($data_kategori as $item) { ?>
 												<option value="<?= $item->id_kategori ?>"><?= $item->nama_kategori ?></option>
-											<?php }
+										<?php }
 										} ?>
 									</select>
 								</div>
@@ -277,8 +278,7 @@
 							<div class="form-group basic">
 								<div class="input-wrapper">
 									<label class="form-label" for="tempat">Alamat <small class="text-danger">*</small></label>
-									<input type="text" class="form-control" id="tempat" name="tempat"
-										   placeholder="Alamat" required>
+									<input type="text" class="form-control" id="tempat" name="tempat" placeholder="Alamat" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
@@ -296,8 +296,7 @@
 							<div class="form-group basic">
 								<div class="input-wrapper">
 									<label class="form-label" for="keterangan">Keterangan <small class="text-danger">*</small></label>
-									<input type="text" class="form-control" id="keterangan" name="keterangan"
-										   placeholder="Keterangan" required>
+									<input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
@@ -363,8 +362,8 @@
 	// 	./script untuk detail jadwal
 
 	// script untuk  edit jadwal
-	$(document).ready(function (){
-		$('.edit-jadwal').click(function (event){
+	$(document).ready(function() {
+		$('.edit-jadwal').click(function(event) {
 			event.preventDefault();
 
 			var jadwalId = $(this).data('id');
@@ -377,7 +376,7 @@
 				url: '<?= base_url('jadwal/detail/') ?>' + jadwalId,
 				method: 'GET',
 				dataType: 'json',
-				success: function (response){
+				success: function(response) {
 					$('#edit_id_dojang').val(response.id_dojang);
 					$('#edit_id_pelatih').val(response.id_pelatih);
 					$('#edit_id_kategori').val(response.id_kategori);
@@ -401,14 +400,15 @@
 	// script untuk  edit jadwal
 
 	// script untuk hapus jadwal
-	$(document).ready(function () {
-		$('.hapus-jadwal').click(function (event){
+	$(document).ready(function() {
+		$('.hapus-jadwal').click(function(event) {
 			event.preventDefault(); // Mencegah aksi default dari tombol
 
 			var jadwalId = $(this).data('id');
 			console.log("Jadwal ID:", jadwalId);
 			showHapusDojangForm(jadwalId); // Tampilkan form edit atlet dalam modal
 		});
+
 		function showHapusDojangForm(jadwalId) {
 			$.ajax({
 				url: '<?= base_url('jadwal/detail/') ?>' + jadwalId,
@@ -419,7 +419,8 @@
 					$('#tanggal').text(response.tanggal);
 
 					// Ubah action form menjadi update
-					//var updateUrl = '<?php //= base_url('atlet/update/') ?>//' + response.id;
+					//var updateUrl = '<?php //= base_url('atlet/update/') 
+										?>//' + response.id;
 					//console.log("Update URL:", updateUrl);
 					//$('#editAtletForm').attr('action', updateUrl);
 
@@ -438,7 +439,6 @@
 		}
 	})
 	// ./script untuk hapus jadwal
-
 </script>
 
 

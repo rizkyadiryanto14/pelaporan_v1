@@ -52,3 +52,28 @@ $route['pembayaran/detail/(:num)']	= 'Backend/Pembayaran/detail/$1';
 $route['pembayaran/insert']			= 'Backend/Pembayaran/insert';
 $route['pembayaran/update/(:num)']	= 'Backend/Pembayaran/update/$1';
 $route['pembayaran/delete/(:num)']	= 'Backend/Pembayaran/delete/$1';
+
+//iuran
+$route['iuran']						= 'Backend/Iuran';
+$route['iuran/insert']				= 'Backend/Iuran/insert';
+$route['iuran/update/(:num)']		= 'Backend/Iuran/update/$1';
+$route['iuran/delete/(:num)']		= 'Backend/Iuran/delete/$1';
+$route['iuran/detail/(:num)']		= 'Backend/Iuran/detail/$1';
+
+$route['kategori_belanja']			= 'Backend/Kategori_belanja';
+$route['kategori_belanja/detail/(:num)']	= 'Backend/Kategori_belanja/detail/$1';
+$route['kategori_belanja/insert']	= 'Backend/Kategori_belanja/insert';
+$route['kategori_belanja/update/(:num)']	= 'Backend/Kategori_belanja/update/$1';
+$route['kategori_belanja/delete/(:num)'] = 'Backend/Kategori_belanja/delete/$1';
+
+$route['belanja']			= 'Backend/Belanja';
+$route['belanja/detail/(:num)']	= 'Backend/Belanja/detail/$1';
+$route['belanja/insert']	= 'Backend/Belanja/insert';
+$route['belanja/update/(:num)']	= 'Backend/Belanja/update/$1';
+$route['belanja/delete/(:num)'] = 'Backend/Belanja/delete/$1';
+
+$route['anggaran']			= 'Backend/Anggaran';
+$route['anggaran/detail/(:num)']	= 'Backend/Anggaran/detail/$1';
+$route['anggaran/insert']	= 'Backend/Anggaran/insert';
+$route['anggaran/update/(:num)']	= 'Backend/Anggaran/update/$1';
+$route['anggaran/delete/(:num)'] = 'Backend/Anggaran/delete/$1';
