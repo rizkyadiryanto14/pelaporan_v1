@@ -1,6 +1,14 @@
 <?php
 
+
 /**
+ *  Controller untuk mengelola Atlet
+ *
+ * @package Codeigniter
+ * @subpackage Controllers
+ * @Category Atlet
+ * @author rizky adi ryanto
+ *
  * @property $Atlet_model
  * @property $input
  * @property $session
@@ -8,11 +16,18 @@
 
 class Atlet extends CI_Controller
 {
+	/**
+	 * Fungsi Construct
+	 */
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('Atlet_model');
 	}
+
+	/**
+	 * @return void
+	 */
 
 	public function index(): void
 	{
@@ -26,12 +41,20 @@ class Atlet extends CI_Controller
 	}
 
 
+	/**
+	 * @param $atletId
+	 * @return void
+	 */
+
 	public function detail($atletId): void
 	{
 		$atlet = $this->Atlet_model->get_atlet_id($atletId);
 		echo json_encode($atlet);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function insert(): void
 	{
 		$post = $this->input->post();
@@ -45,11 +68,16 @@ class Atlet extends CI_Controller
 		redirect(base_url('atlet'));
 	}
 
+	/**
+	 * @param $id_atlet
+	 * @return void
+	 */
+
 	public function update($id_atlet): void
 	{
-		// Pastikan request adalah HTTP POST
+		// HTTP POST
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			// Ambil data dari form
+
 			$data = array(
 				'nama_atlet' => $this->input->post('nama_atlet'),
 				'email' => $this->input->post('email'),
@@ -59,10 +87,8 @@ class Atlet extends CI_Controller
 				'tempat_lahir' => $this->input->post('tempat_lahir')
 			);
 
-			// Panggil model untuk update data atlet
 			$this->Atlet_model->update_atlet($id_atlet, $data);
 
-			// Redirect ke halaman yang sesuai setelah update
 			redirect(base_url('atlet'));
 		}
 	}

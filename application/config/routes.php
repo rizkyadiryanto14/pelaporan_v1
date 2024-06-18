@@ -52,6 +52,7 @@ $route['pembayaran/detail/(:num)']	= 'Backend/Pembayaran/detail/$1';
 $route['pembayaran/insert']			= 'Backend/Pembayaran/insert';
 $route['pembayaran/update/(:num)']	= 'Backend/Pembayaran/update/$1';
 $route['pembayaran/delete/(:num)']	= 'Backend/Pembayaran/delete/$1';
+$route['pembayaran/get_pembayaran_json'] = 'Backend/Pembayaran/get_pembayaran_json';
 
 //iuran
 $route['iuran']						= 'Backend/Iuran';
@@ -77,3 +78,16 @@ $route['anggaran/detail/(:num)']	= 'Backend/Anggaran/detail/$1';
 $route['anggaran/insert']	= 'Backend/Anggaran/insert';
 $route['anggaran/update/(:num)']	= 'Backend/Anggaran/update/$1';
 $route['anggaran/delete/(:num)'] = 'Backend/Anggaran/delete/$1';
+
+//laporan
+$route['laporan']					= 'Backend/Laporan';
+$route['laporan/pembayaran']		= 'Laporan/Laporan_pembayaran';
+$route['laporan/atlet']				= 'Laporan/Laporan_atlet';
+$route['laporan/get_atlet_json'] 	= 'Laporan/Laporan_atlet/get_atlet_json';
+$route['laporan/get_pembayaran_json'] = 'Laporan/Laporan_pembayaran/get_pembayaran_json';
+
+
+//cetak pdf
+$route['laporan/cetak_pdf_atlet']		= 'Laporan/Laporan_atlet/cetak_pdf_atlet';
+$route['laporan/cetak_pdf_pembayaran']	= 'Laporan/Laporan_pembayaran/cetak_pdf_pembayaran';
+$route['laporan/cetak_pdf_pembayaran_filter'] = 'Laporan/Laporan_pembayaran/cetak_pdf_pembayaran_filter';

@@ -20,6 +20,10 @@
 					<th>No</th>
 					<th>Dojang</th>
 					<th>Atlet</th>
+					<th>Nominal Iuran</th>
+					<th>Nominal Pembayaran</th>
+					<th>Sisa</th>
+					<th>Pembayaran-Ke</th>
 					<th>Tanggal</th>
 					<th>Bukti</th>
 					<th>Tanggal</th>
@@ -34,9 +38,15 @@
 					foreach ($data_pembayaran as $item) { ?>
 						<tr class="text-center">
 							<td><?= $no++ ?></td>
-							<td><a href="" data-id="<?= $item->id_pembayaran ?>" data-bs-toggle="offcanvas"
-								   data-bs-target="#actionSheetShare"><?= $item->nama_dojang ?></a></td>
+							<td>
+								<a href="" data-id="<?= $item->id_pembayaran ?>" data-bs-toggle="offcanvas"
+								   data-bs-target="#actionSheetShare"><?= $item->nama_dojang ?></a>
+							</td>
 							<td><?= $item->nama_atlet ?></td>
+							<td><?= 'Rp.' . number_format($item->nominal) ?></td>
+							<td><?= 'Rp.'. number_format($item->nominal_pembayaran) ?></td>
+							<td><?= 'Rp.' . number_format($item->sisa) ?></td>
+							<td><?= $item->jumlah_pembayaran ?></td>
 							<td><?= longdate_indo($item->tgl_bayar) ?> </td>
 							<td>
 								<a href="<?= base_url('uploads/bukti_bayar/' .$item->bukti_bayar) ?>">Lihat Bukti</a>
@@ -79,13 +89,15 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
-	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
-		<div class="col">
-			<div class="action-button">
-				<ion-icon name="add-outline"></ion-icon>
+	<?php if ($this->session->userdata('role') == '1' || $this->session->userdata('role') == '2'){ ?>
+		<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
+			<div class="col">
+				<div class="action-button">
+					<ion-icon name="add-outline"></ion-icon>
+				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>
@@ -145,6 +157,41 @@
 							</div>
 							<div class="form-group basic">
 								<div class="input-wrapper">
+									<label class="form-label" for="edit_id_iuran">Iuran <small class="text-danger">*</small></label>
+									<select name="id_iuran" id="edit_id_iuran" class="form-control" required>
+										<option selected disabled> Pilih Iuran</option>
+										<?php if (!empty($data_iuran)) { // Pastikan Anda mengirimkan data iuran dari controller
+											foreach ($data_iuran as $item) { ?>
+												<option value="<?= $item->id_iuran ?>"><?= $item->periode ?></option>
+											<?php }
+										} ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
+									<label class="form-label" for="edit_jumlah_pembayaran">Pembayaran Ke <small class="text-danger">*</small></label>
+									<select name="jumlah_pembayaran" id="edit_jumlah_pembayaran" class="form-control" required>
+										<option selected disabled> Pilih Pembayaran</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">lunas</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
+									<label class="form-label" for="edit_nominal_pembayaran">Nominal <small class="text-danger">*</small></label>
+									<input type="text" class="form-control" id="edit_nominal_pembayaran" name="nominal_pembayaran"
+										   placeholder="Nominal Pembayaran" required>
+									<i class="clear-input">
+										<ion-icon name="close-circle"></ion-icon>
+									</i>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
 									<label class="form-label" for="edit_metode_pembayaran">Metode Pembayaran <small class="text-danger">*</small></label>
 									<input type="text" class="form-control" id="edit_metode_pembayaran" name="metode_pembayaran"
 										   placeholder="Nama Pelatih" required>
@@ -157,16 +204,6 @@
 								<div class="input-wrapper">
 									<label class="form-label" for="edit_bukti_bayar">Bukti Bayar <small class="text-danger">*</small></label>
 									<input type="file" class="form-control" id="edit_bukti_bayar" name="bukti_bayar" required>
-								</div>
-							</div>
-							<div class="form-group basic">
-								<div class="input-wrapper">
-									<label class="form-label" for="edit_status">Status Pembayaran <small class="text-danger">*</small></label>
-									<select name="status" id="edit_status" class="form-control">
-										<option selected disabled> Pilih Status</option>
-										<option value="1">Telah Melakukan Pembayaran</option>
-										<option value="0">Belum Melakukan Pembayaran</option>
-									</select>
 								</div>
 							</div>
 							<div class="mt-2">
@@ -225,9 +262,44 @@
 							</div>
 							<div class="form-group basic">
 								<div class="input-wrapper">
+									<label class="form-label" for="edit_id_iuran">Iuran <small class="text-danger">*</small></label>
+									<select name="id_iuran" id="edit_id_iuran" class="form-control" required>
+										<option selected disabled> Pilih Iuran</option>
+										<?php if (!empty($data_iuran)) { // Pastikan Anda mengirimkan data iuran dari controller
+											foreach ($data_iuran as $item) { ?>
+												<option value="<?= $item->id_iuran ?>"><?= $item->periode ?></option>
+											<?php }
+										} ?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
+									<label class="form-label" for="jumlah_pembayaran">Pembayaran Ke <small class="text-danger">*</small></label>
+									<select name="jumlah_pembayaran" id="jumlah_pembayaran" class="form-control" required>
+										<option selected disabled> Pilih Pembayaran</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">lunas</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
 									<label class="form-label" for="metode_pembayaran">Metode Pembayaran <small class="text-danger">*</small></label>
 									<input type="text" class="form-control" id="metode_pembayaran" name="metode_pembayaran"
-										   placeholder="Nama Pelatih" required>
+										   placeholder="Metode Pembayaran" required>
+									<i class="clear-input">
+										<ion-icon name="close-circle"></ion-icon>
+									</i>
+								</div>
+							</div>
+							<div class="form-group basic">
+								<div class="input-wrapper">
+									<label class="form-label" for="nominal_pembayaran">Nominal <small class="text-danger">*</small></label>
+									<input type="text" class="form-control" id="nominal_pembayaran" name="nominal_pembayaran"
+										   placeholder="Nominal Pembayaran" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
@@ -240,16 +312,6 @@
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
 									</i>
-								</div>
-							</div>
-							<div class="form-group basic">
-								<div class="input-wrapper">
-									<label class="form-label" for="status">Status Pembayaran <small class="text-danger">*</small></label>
-									<select name="status" id="status" class="form-control">
-										<option selected disabled> Pilih Status</option>
-										<option value="1">Telah Melakukan Pembayaran</option>
-										<option value="0">Belum Melakukan Pembayaran</option>
-									</select>
 								</div>
 							</div>
 							<div class="mt-2">
@@ -298,6 +360,7 @@
 		$('.edit-pembayaran').click(function (event) {
 			event.preventDefault();
 			var pembayaranId = $(this).data('id');
+			console.log(pembayaranId);
 			showEditPembayaranForm(pembayaranId);
 		});
 
@@ -310,8 +373,10 @@
 					// Populate the form fields with the response data
 					$('#edit_id_dojang').val(response.id_dojang_pembayaran);
 					$('#edit_id_atlet').val(response.id_atlet_pembayaran);
+					$('#edit_id_iuran').val(response.id_iuran);
+					$('#edit_jumlah_pembayaran').val(response.jumlah_pembayaran);
+					$('#edit_nominal_pembayaran').val(response.nominal_pembayaran);
 					$('#edit_metode_pembayaran').val(response.metode_pembayaran);
-					$('#edit_status').val(response.status);
 
 					// Display current file information (if available)
 					var buktiBayarLabel = $('label[for="edit_bukti_bayar"]');

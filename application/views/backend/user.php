@@ -40,6 +40,8 @@
 									admin
 								<?php }elseif ($item->role == 2) { ?>
 									user
+								<?php }elseif($item->role == 3) { ?>
+									Bendahara
 								<?php } ?>
 							</td>
 							<td>

@@ -37,9 +37,17 @@
 								   data-bs-target="#actionSheetShare"><?= $item->nama_atlet ?></a></td>
 							<td><?= $item->alamat ?></td>
 							<td>
+								<?php if($this->session->userdata('role') == '1') { ?>
 								<button class="btn btn-primary btn-sm edit-atlet" data-id="<?= $item->id_atlet ?>" data-bs-target="#modaledit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></button>
 
 								<button class="btn btn-danger btn-sm hapus-atlet" data-id="<?= $item->id_atlet ?>" data-bs-target="#modalhapus" data-bs-toggle="modal"><ion-icon name="trash-outline"></ion-icon></button>
+
+								<button class="btn btn-info" type="submit">
+									<ion-icon name="print-outline"></ion-icon>
+								</button>
+								<?php } else { ?>
+									Tidak Memiliki Akses
+								<?php } ?>
 							</td>
 						</tr>
 					<?php }
@@ -76,13 +84,15 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
-	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
-		<div class="col">
-			<div class="action-button">
-				<ion-icon name="add-outline"></ion-icon>
+	<?php if ($this->session->userdata('role') == '1' || $this->session->userdata('role') == '2'){ ?>
+		<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
+			<div class="col">
+				<div class="action-button">
+					<ion-icon name="add-outline"></ion-icon>
+				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>

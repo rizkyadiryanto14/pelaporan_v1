@@ -38,12 +38,16 @@
 								<td><?= $item->nama_pelatih ?></td>
 								<td><?= longdate_indo($item->tanggal) ?></td>
 								<td>
+									<?php if($this->session->userdata('role') == '1') { ?>
 									<button class="btn btn-primary btn-sm edit-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#ModalEditJadwal" data-bs-toggle="modal">
 										<ion-icon name="create-outline"></ion-icon>
 									</button>
 									<button class="btn btn-danger btn-sm hapus-jadwal" data-id="<?= $item->id_jadwal ?>" data-bs-target="#modalhapus" data-bs-toggle="modal">
 										<ion-icon name="trash-outline"></ion-icon>
 									</button>
+									<?php } else { ?>
+										Tidak Memiliki Akses
+									<?php } ?>
 								</td>
 							</tr>
 					<?php }
@@ -80,6 +84,7 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
+	<?php if ($this->session->userdata('role') == '1') { ?>
 	<a href="#" data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
 		<div class="col">
 			<div class="action-button">
@@ -87,6 +92,7 @@
 			</div>
 		</div>
 	</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item active">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>

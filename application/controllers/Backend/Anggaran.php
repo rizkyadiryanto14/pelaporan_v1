@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Anggaran Controller
+ * Controller untuk mengelola anggaran
+ *
+ * @package Codeigniter
+ * @subpackage Controllers
+ * @Category Anggaran
+ * @author rizky adi ryanto
+ * @link github.com/rizkyadiryanto14
+ *
  * @property $Anggaran_model
  * @property $input
  * @property $session
@@ -8,6 +17,12 @@
 
 class Anggaran extends CI_Controller
 {
+
+	/**
+	 * Construct Anggaran
+	 * Construct ini aka menjalankan fungsi default
+	 */
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -17,14 +32,19 @@ class Anggaran extends CI_Controller
 	public function index(): void
 	{
 		$data_array = [
-			'data_anggaran'	=> $this->Anggaran_model->get_all_join_anggaran(),
+			'data_anggaran'			=> $this->Anggaran_model->get_all_join_anggaran(),
 			'data_kategori_belanja'	=> $this->Anggaran_model->listing_kategori_belanja(),
-			'data_belanja'		=> $this->Anggaran_model->listing_belanja(),
-			'data_dojang'		=> $this->Anggaran_model->listing_dojang(),
-			'title'		=> 'Halaman Anggaran'
+			'data_belanja'			=> $this->Anggaran_model->listing_belanja(),
+			'data_dojang'			=> $this->Anggaran_model->listing_dojang(),
+			'title'					=> 'Halaman Anggaran'
 		];
 		$this->load->view('backend/anggaran', $data_array);
 	}
+
+	/**
+	 * Memasukan data kedalam tabel anggaran
+	 * @return void
+	 */
 
 	public function insert(): void
 	{
@@ -40,11 +60,23 @@ class Anggaran extends CI_Controller
 		redirect(base_url('anggaran'));
 	}
 
+	/**
+	 * Menampilkan data anggaran berdasarkan ID
+	 * @param $id_anggaran
+	 * @return void
+	 */
+
 	public function detail($id_anggaran): void
 	{
 		$atlet = $this->Anggaran_model->detail_anggaran($id_anggaran);
 		echo json_encode($atlet);
 	}
+
+	/**
+	 * Update data anggaran berdasarkan ID
+	 * @param $id_anggaran
+	 * @return void
+	 */
 
 	public function update($id_anggaran): void
 	{
@@ -58,6 +90,12 @@ class Anggaran extends CI_Controller
 		}
 		redirect(base_url('anggaran'));
 	}
+
+	/**
+	 * Menghapus Data Anggaran Berdasarkan ID
+	 * @param $id_anggaran
+	 * @return void
+	 */
 
 	public function delete($id_anggaran): void
 	{

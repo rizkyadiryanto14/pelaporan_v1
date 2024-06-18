@@ -30,6 +30,8 @@
 <script src="<?= base_url() ?>assets/js/plugins/progressbar-js/progressbar.min.js"></script>
 <!-- Base Js File -->
 <script src="<?= base_url() ?>assets/js/base.js"></script>
+<!--Datatables-->
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

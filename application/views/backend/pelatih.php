@@ -76,6 +76,7 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
+	<?php if ($this->session->userdata('role') == '1' || $this->session->userdata('role') == '2'){ ?>
 	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
 		<div class="col">
 			<div class="action-button">
@@ -83,6 +84,7 @@
 			</div>
 		</div>
 	</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>

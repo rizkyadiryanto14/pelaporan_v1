@@ -7,7 +7,7 @@
 				<img src="<?= base_url() ?>assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
 			</div>
 			<div class="in">
-				<strong>Admin</strong>
+				<strong><?= $this->session->userdata('username') ?></strong>
 				<div class="text-muted">
 					<ion-icon name="location"></ion-icon>
 					Sumbawa
@@ -20,23 +20,14 @@
 		<!-- * profile box -->
 
 		<ul class="listview flush transparent no-line image-listview mt-2">
+			<?php if ($this->session->userdata('role') == '1') { ?>
 			<li>
 				<a href="<?= base_url('pembayaran') ?>" class="item">
 					<div class="icon-box bg-primary">
 						<ion-icon name="cash-outline"></ion-icon>
 					</div>
 					<div class="in">
-						<div>Anggaran Masuk</div>
-					</div>
-				</a>
-			</li>
-			<li>
-				<a href="<?= base_url('anggaran') ?>" class="item">
-					<div class="icon-box bg-primary">
-						<ion-icon name="cash-outline"></ion-icon>
-					</div>
-					<div class="in">
-						<div>Anggaran Keluar</div>
+						<div>Pembayaran</div>
 					</div>
 				</a>
 			</li>
@@ -71,25 +62,69 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?= base_url('kategori_belanja') ?>" class="item">
+				<a href="<?= base_url('laporan') ?>" class="item">
 					<div class="icon-box bg-primary">
 						<ion-icon name="wallet-outline"></ion-icon>
 					</div>
 					<div class="in">
-						<div>Kategori Belanja</div>
+						<div>Laporan</div>
 					</div>
 				</a>
 			</li>
-			<li>
-				<a href="<?= base_url('belanja') ?>" class="item">
-					<div class="icon-box bg-primary">
-						<ion-icon name="wallet-outline"></ion-icon>
-					</div>
-					<div class="in">
-						<div>Belanja</div>
-					</div>
-				</a>
-			</li>
+			<?php }elseif ($this->session->userdata('role') == '2') { ?>
+				<li>
+					<a href="<?= base_url('pembayaran') ?>" class="item">
+						<div class="icon-box bg-primary">
+							<ion-icon name="cash-outline"></ion-icon>
+						</div>
+						<div class="in">
+							<div>Pembayaran</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="<?= base_url('pelatih') ?>" class="item">
+						<div class="icon-box bg-primary">
+							<ion-icon name="accessibility-outline"></ion-icon>
+						</div>
+						<div class="in">
+							<div>Pelatih</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="<?= base_url('laporan') ?>" class="item">
+						<div class="icon-box bg-primary">
+							<ion-icon name="wallet-outline"></ion-icon>
+						</div>
+						<div class="in">
+							<div>Laporan</div>
+						</div>
+					</a>
+				</li>
+			<?php } elseif ($this->session->userdata('role') == '3') { ?>
+				<li>
+					<a href="<?= base_url('laporan') ?>" class="item">
+						<div class="icon-box bg-primary">
+							<ion-icon name="wallet-outline"></ion-icon>
+						</div>
+						<div class="in">
+							<div>Laporan</div>
+						</div>
+					</a>
+				</li>
+			<?php }elseif($this->session->userdata('role') == '4') { ?>
+				<li>
+					<a href="<?= base_url('laporan') ?>" class="item">
+						<div class="icon-box bg-primary">
+							<ion-icon name="wallet-outline"></ion-icon>
+						</div>
+						<div class="in">
+							<div>Laporan</div>
+						</div>
+					</a>
+				</li>
+			<?php } ?>
 			<li>
 				<div class="item">
 					<div class="icon-box bg-primary">

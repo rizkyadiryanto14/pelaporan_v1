@@ -32,14 +32,18 @@ class Auth extends CI_Controller
 					'role'          => $user['role'],
 					'last_login'    => date("m-d-Y H:i:s"),
 				];
-
 				$this->session->set_userdata($usersession);
 
 				if ($usersession['role'] == '1') {
 					redirect(base_url('dashboard'));
 				} elseif ($usersession['role'] == '2') {
 					redirect(base_url('dashboard'));
-				} else {
+				}elseif($usersession['role'] == '3'){
+					redirect(base_url('dashboard'));
+				}elseif($usersession['role'] == '4'){
+					redirect(base_url('dashboard'));
+				}
+				else {
 					show_404();
 				}
 			} else {
@@ -52,7 +56,10 @@ class Auth extends CI_Controller
 		}
 	}
 
-	public function logout()
+	/**
+	 * @return void
+	 */
+	public function logout(): void
 	{
 		$this->session->sess_destroy();
 

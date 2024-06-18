@@ -19,11 +19,11 @@
 		<div class="table-responsive">
 			<table class="table table-responsive">
 				<thead>
-				<tr>
+				<tr class="text-center">
 					<th>Kode</th>
 					<th>Nominal</th>
 					<th>Keterangan</th>
-					<th>Tempo</th>
+					<th>Periode</th>
 					<th>Action</th>
 				</tr>
 				</thead>
@@ -38,7 +38,7 @@
 							<td><?= $item->kode_iuran ?></td>
 							<td>Rp.<?= number_format($item->nominal) ?></td>
 							<td><?= $item->keterangan_iuran ?></td>
-							<td><?= longdate_indo($item->jatuh_tempo) ?></td>
+							<td><?= longdate_indo($item->periode) ?></td>
 							<td>
 								<button class="btn btn-primary btn-sm edit-iuran" data-id="<?= $item->id_iuran ?>" data-bs-target="#ModalEditIuran" data-bs-toggle="modal"><ion-icon name="create-outline"></button>
 								<button class="btn btn-danger btn-sm hapus-iuran" data-id="<?= $item->id_iuran ?>"data-bs-target="#ModalhapusIuran" data-bs-toggle="modal"><ion-icon name="trash-outline"></ion-icon></button>
@@ -66,13 +66,15 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
-	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
-		<div class="col">
-			<div class="action-button">
-				<ion-icon name="add-outline"></ion-icon>
+	<?php if ($this->session->userdata('role') == '1'){ ?>
+		<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
+			<div class="col">
+				<div class="action-button">
+					<ion-icon name="add-outline"></ion-icon>
+				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>
@@ -154,8 +156,8 @@
 							</div>
 							<div class="form-group basic">
 								<div class="input-wrapper">
-									<label class="form-label" for="jatuh_tempo">Jatuh Tempo <small class="text-danger">*</small></label>
-									<input type="date" class="form-control" id="jatuh_tempo" name="jatuh_tempo"
+									<label class="form-label" for="periode"> Periode <small class="text-danger">*</small></label>
+									<input type="date" class="form-control" id="periode" name="periode"
 										   placeholder="Jatuh Tempo" required>
 									<i class="clear-input">
 										<ion-icon name="close-circle"></ion-icon>
@@ -251,7 +253,6 @@
 	</div>
 </div>
 <!-- * Modal Form -->
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>

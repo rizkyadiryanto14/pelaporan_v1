@@ -39,9 +39,13 @@
 								   data-bs-target="#actionSheetShare"><?= $item->nama_dojang ?></a></td>
 							<td><?= $item->alamat ?></td>
 							<td>
+								<?php if($this->session->userdata('role') == '1' || $this->session->userdata('role') == '3') { ?>
 								<button class="btn btn-primary btn-sm edit-dojang" data-id="<?= $item->id_dojang ?>" data-bs-target="#ModalEditDojang" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></button>
 
 								<button class="btn btn-danger btn-sm hapus-dojang" data-id="<?= $item->id_dojang ?>" data-bs-target="#modalhapus" data-bs-toggle="modal"><ion-icon name="trash-outline"></ion-icon></button>
+								<?php } else { ?>
+									Tidak Memiliki Akses
+								<?php } ?>
 							</td>
 						</tr>
 					<?php }
@@ -78,6 +82,7 @@
 			<strong>Atlet</strong>
 		</div>
 	</a>
+	<?php if ($this->session->userdata('role') == '1' || $this->session->userdata('role') == '3')  { ?>
 	<a href="#"  data-bs-toggle="modal" data-bs-target="#ModalForm" class="item">
 		<div class="col">
 			<div class="action-button">
@@ -85,6 +90,7 @@
 			</div>
 		</div>
 	</a>
+	<?php } ?>
 	<a href="<?= base_url('jadwal') ?>" class="item">
 		<div class="col">
 			<ion-icon name="hourglass-outline"></ion-icon>
